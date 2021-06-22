@@ -32,9 +32,20 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
     const handleBtnPressed = btnPressedValue => {
         if(['9', '8', '7', '6', '5', '4', '3', '2', '1', '0'].includes(btnPressedValue)) {
             calculatorActions.fetchNumber(btnPressedValue);
-        } else {
+        } else if(btnPressedValue === '/'){
+            console.log(btnPressedValue);
+        } else if(btnPressedValue === '*'){
+            console.log(btnPressedValue);
+        } else if(btnPressedValue === '-'){
+            console.log(btnPressedValue);
+        } else if(btnPressedValue === '+'){
+            console.log(btnPressedValue);
+        } else if(btnPressedValue === '.'){
+            console.log(btnPressedValue);
+        } else if(btnPressedValue === '='){
+            console.log(btnPressedValue);
+        } 
 
-        }
     };
 
     return (
