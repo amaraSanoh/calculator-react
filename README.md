@@ -1,6 +1,8 @@
 # Calculator App Front end with React  
 This project allows to compute arithmetic expressions like google calculator.  
 All the calculation is done on the server side.  
+This project uses React material ui and bootstrap because of its grid system.  
+
 
 # Test with Jest  
 This app is built with Create React App. So with Jest dependence.  
