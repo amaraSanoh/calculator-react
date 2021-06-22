@@ -1,3 +1,8 @@
+# Calculator App Front end with React  
+This project allows to compute arithmetic expressions like google calculator.  
+All the calculation is done on the server side.  
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
