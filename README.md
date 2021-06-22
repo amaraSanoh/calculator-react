@@ -2,6 +2,11 @@
 This project allows to compute arithmetic expressions like google calculator.  
 All the calculation is done on the server side.  
 
+# Test with Jest  
+This app is built with Create React App. So with Jest dependence.  
+You will only need to add react-test-renderer for rendering snapshots.  
+For more about Jest, follow this link https://jestjs.io/fr/docs/tutorial-react  
+
 
 # Getting Started with Create React App
 
