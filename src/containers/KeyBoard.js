@@ -2,7 +2,12 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Acbutton from './Acbutton';
 
-const KeyBoard = () => {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as calculatorActions from '../store/actions/CalculatorActions';
+import { calculatorSelector } from '../store/selectors/CalculatorSelector';
+
+const KeyBoard = ({calculatorInfos, calculatorActions}) => {
 
     const keys = [
                     {value: '7', color: 'default'}, 
@@ -22,6 +27,16 @@ const KeyBoard = () => {
                     {value: '=', color: 'secondary'}, 
                     {value: '+', color: 'primary'}
     ];
+
+    const handleBtnPressed = btnPressedValue => {
+        console.log('dsdshjdsg');
+        if(['9', '8', '7', '6', '5', '4', '3', '2', '1', '0'].includes(btnPressedValue)) {
+            calculatorActions.fetchNumber(btnPressedValue);
+        } else {
+
+        }
+    };
+
     return (
         <div className='row m-2'>
             <div className='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 border border-secondary p-2'>
@@ -32,7 +47,7 @@ const KeyBoard = () => {
                             {
                                 keys.map(key => (
                                     <div key={key.value} className='col-3 mb-2'>
-                                        <Button variant="contained" color={key.color} fullWidth={true} onClick={() => console.log(key.value)}>{key.value}</Button>
+                                        <Button variant="contained" color={key.color} fullWidth={true} onClick={() => handleBtnPressed(key.value)}>{key.value}</Button>
                                     </div>       
                                 ))
                             }
@@ -44,4 +59,16 @@ const KeyBoard = () => {
     );
 };
 
-export default KeyBoard;
+const mapStateToProps = state => {
+    return {
+        calculatorInfos: calculatorSelector(state)
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        calculatorActions:  bindActionCreators(calculatorActions, dispatch),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(KeyBoard);
