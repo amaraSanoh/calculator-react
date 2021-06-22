@@ -36,3 +36,21 @@ export const fetchClean = () => {
         setTimeout(() => dispatch(cleanSuccess()), 50);
     }
 }
+
+/* Long Pressed to AC button */
+const deleteRequest = () => ({
+    type: appActions.deleteRequest,
+    loading: true
+});
+
+const deleteSuccess = () => ({
+    type: appActions.deleteSuccess,
+    loading: false
+});
+
+export const fetchDelete = () => {
+    return (dispatch) => {
+        dispatch(deleteRequest());
+        setTimeout(() => dispatch(deleteSuccess()), 50);
+    }
+}

@@ -37,6 +37,22 @@ function CalculatorReducer(state = initialState, action) {
             }
             return nextState || state
 
+        case appActions.deleteRequest:
+            nextState = {
+                ...state,
+                loading: action.loading
+            }
+            return nextState || state;
+
+        case appActions.deleteSuccess:
+            nextState = {
+                ...state, 
+                loading: action.loading,
+                expression: state.expression.substr(0, state.expression.length - 1),
+                compute: ''
+            }
+            return nextState || state
+
         default:
             return state
     }

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as calculatorActions from '../store/actions/CalculatorActions';
 import { calculatorSelector } from '../store/selectors/CalculatorSelector';
+import Delete from './Delete';
 
 const KeyBoard = ({calculatorInfos, calculatorActions}) => {
 
@@ -29,7 +30,6 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
     ];
 
     const handleBtnPressed = btnPressedValue => {
-        console.log('dsdshjdsg');
         if(['9', '8', '7', '6', '5', '4', '3', '2', '1', '0'].includes(btnPressedValue)) {
             calculatorActions.fetchNumber(btnPressedValue);
         } else {
@@ -40,7 +40,14 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
     return (
         <div className='row m-2'>
             <div className='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 border border-secondary p-2'>
-                <Acbutton />
+                <div className='row'>
+                    <div className='col-6'>
+                        <Acbutton />
+                    </div>
+                    <div className='col-6'>
+                        <Delete />
+                    </div>
+                </div>
                 <div className='row'>
                     <div className='col-12'>
                         <div className='row'>

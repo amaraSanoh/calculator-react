@@ -19,6 +19,9 @@ export const appActions = {
     cleanRequest: "CLEAN_REQUEST",
     cleanSuccess: "CLEAN_SUCCESS",
 
+    deleteRequest: "DELETE_REQUEST",
+    deleteSuccess: "DELETE_SUCCESS",
+
     dotRequest: "DOT_REQUEST",
     dotSuccess: "DOT_SUCCESS",
     dotFailure: "DOT_FAILURE",
