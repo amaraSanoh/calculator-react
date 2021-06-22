@@ -1,11 +1,10 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
 
 const NoticeBoard = () => {
     return (
         <div className='row m-2'>
-            <div className='col-xs-12 col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8'>
-                <Paper elevation={5} className={'p-3 col-xs-12 col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8 bg-light'}>
+            <div className='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 border border-success'>
+                <div className='p-2'>
                     <div className='row'>
                         <div className='col-12 text-end'>
                             12+3+76-89*9/12/23
@@ -16,7 +15,7 @@ const NoticeBoard = () => {
                             = 12234
                         </div>
                     </div>
-                </Paper>
+                </div>
             </div>
         </div>
     );

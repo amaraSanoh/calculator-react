@@ -1,10 +1,12 @@
 import './App.css';
-import NoticeBoard from './containers/NoticeBoard';
+import MainBar from './components/MainBar';
+import Calculator from './containers/Calculator';
 
 function App() {
   return (
-    <div className="App">
-      <NoticeBoard />
+    <div>
+      <MainBar />
+      <Calculator />
     </div>
   );
 }
