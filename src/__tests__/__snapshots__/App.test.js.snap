@@ -68,7 +68,7 @@ exports[`<App /> Component renders correctly 1`] = `
           className="p-2"
         >
           <div
-            className="row"
+            className="row mb-2"
             style={
               Object {
                 "height": 10,
@@ -82,15 +82,15 @@ exports[`<App /> Component renders correctly 1`] = `
             </div>
           </div>
           <div
-            className="row p-2"
+            className="row"
             style={
               Object {
-                "height": 55,
+                "height": 33,
               }
             }
           >
             <div
-              className="col-12 text-end fs-1 fw-bold"
+              className="col-12 text-end fs-4 fw-bold"
             >
               0
             </div>

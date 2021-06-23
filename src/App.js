@@ -11,7 +11,7 @@ function App() {
       <div>
         <MainBar />
         <Calculator />
-    </div>
+      </div>
     </Provider>
   );
 }

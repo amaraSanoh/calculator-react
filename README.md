@@ -4,16 +4,22 @@ All the calculation is done on the server side.
 This project uses React material ui and bootstrap because of its grid system.  
 
 - This app also uses Redux et react-redux to handle the global state. For more follow this link https://redux.js.org/introduction/getting-started  
-- This app uses Redux-thunk for synhronous requirements. For more follow this link https://github.com/reduxjs/redux-thunk  
+- This app uses Redux-thunk for asynhronous requirements. For more follow this link https://github.com/reduxjs/redux-thunk  
 - This app uses Fetch to call the api entry points. For more follow this link : https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch#cr%C3%A9er_une_requ%C3%AAte_fetch  
 - This app uses reselect, a Simple “selector” library for Redux (and others) inspired by getters in NuclearJS, subscriptions in re-frame and this proposal from speedskater.  
-
 
 
 # Test with Jest  
 This app is built with Create React App. So with Jest dependence.  
 You will only need to add react-test-renderer for rendering snapshots.  
 For more about Jest, follow this link https://jestjs.io/fr/docs/tutorial-react  
+
+
+# Versions  
+React version : 17.0.2  
+Yarn version : 1.21.1  
+Node version : 14.17.1  
+Bootstrap version : ^5.0.1  
 
 
 # Getting Started with Create React App
