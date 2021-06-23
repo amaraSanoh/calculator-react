@@ -75,22 +75,22 @@ export const fetchDot = dot => {
     }
 }
 
-/* Pressed on division or multiplication button */
-const divisionMultRequest = () => ({
-    type: appActions.divisionMultRequest,
+/* Pressed on division or multiplication or sum button */
+const divisionMultSumRequest = () => ({
+    type: appActions.divisionMultSumRequest,
     loading: true
 });
 
-const divisionMultSuccess = operator => ({
-    type: appActions.divisionMultSuccess,
+const divisionMultSumSuccess = operator => ({
+    type: appActions.divisionMultSumSuccess,
     loading: false,
     value: operator
 });
 
-export const fetchDivisionMult = division => {
+export const fetchDivisionMultSum = operator => {
     return (dispatch) => {
-        dispatch(divisionMultRequest());
-        setTimeout(() => dispatch(divisionMultSuccess(division)), 50);
+        dispatch(divisionMultSumRequest());
+        setTimeout(() => dispatch(divisionMultSumSuccess(operator)), 50);
     }
 }
 

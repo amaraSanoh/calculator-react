@@ -9,7 +9,6 @@ import { calculatorSelector } from '../store/selectors/CalculatorSelector';
 import DeleteButton from './DeleteButton';
 
 const KeyBoard = ({calculatorInfos, calculatorActions}) => {
-    console.log(calculatorInfos);
 
     const keys = [
                     {value: '7', color: 'default'}, 
@@ -31,22 +30,26 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
     ];
 
     const handleBtnPressed = btnPressedValue => {
-        if(['9', '8', '7', '6', '5', '4', '3', '2', '1', '0'].includes(btnPressedValue)) {
+        if(['9', '8', '7', '6', '5', '4', '3', '2', '1', '0'].includes(btnPressedValue)) 
             calculatorActions.fetchNumber(btnPressedValue);
-        } else if(btnPressedValue === '/') {
-            calculatorActions.fetchDivisionMult('/');
-        } else if(btnPressedValue === '*') {
-            calculatorActions.fetchDivisionMult('*');
-        } else if(btnPressedValue === '-') {
-            calculatorActions.fetchSubstraction('-');
-        } else if(btnPressedValue === '+') {
-            console.log(btnPressedValue);
-        } else if(btnPressedValue === '.') {
-            calculatorActions.fetchDot('.');
-        } else if(btnPressedValue === '=') {
-            console.log(btnPressedValue);
-        } 
 
+        else if(btnPressedValue === '/') 
+            calculatorActions.fetchDivisionMultSum('/');
+
+        else if(btnPressedValue === '*') 
+            calculatorActions.fetchDivisionMultSum('*');
+        
+        else if(btnPressedValue === '-') 
+            calculatorActions.fetchSubstraction('-');
+
+        else if(btnPressedValue === '+') 
+            calculatorActions.fetchDivisionMultSum('+');
+
+        else if(btnPressedValue === '.') 
+            calculatorActions.fetchDot('.');
+
+        else if(btnPressedValue === '=') 
+            console.log(btnPressedValue);
     };
 
     return (

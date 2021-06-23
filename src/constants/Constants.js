@@ -26,9 +26,9 @@ export const appActions = {
     dotSuccess: "DOT_SUCCESS",
     dotFailure: "DOT_FAILURE",
 
-    divisionMultRequest: "DIVISION_MULT_REQUEST",
-    divisionMultSuccess: "DIVISION_MULT_SUCCESS",
-    divisionMultFailure: "DIVISION_MULT_FAILURE",
+    divisionMultSumRequest: "DIVISION_MULT_SUM_REQUEST",
+    divisionMultSumSuccess: "DIVISION_MULT_SUM_SUCCESS",
+    divisionMultSumFailure: "DIVISION_MULT_SUM_FAILURE",
 
     substractionRequest: "SUBSTRACTION_REQUEST",
     substractionSuccess: "SUBSTRACTION_SUCCESS",

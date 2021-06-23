@@ -1,6 +1,6 @@
 import { appActions } from "../../../constants/Constants";
 
-const initialState = { expression: '', compute: '', lastPartOfExpression: '', loading: false }
+const initialState = { expression: '0', compute: '0', lastPartOfExpression: '', loading: false }
 
 function CalculatorReducer(state = initialState, action) {
     let nextState;
@@ -17,7 +17,7 @@ function CalculatorReducer(state = initialState, action) {
             nextState = {
                 ...state, 
                 loading: action.loading,
-                expression: state.expression+action.value,
+                expression: state.expression === '0' ? action.value : state.expression+action.value,
                 lastPartOfExpression: state.lastPartOfExpression+action.value
             }
             return nextState || state
@@ -33,8 +33,8 @@ function CalculatorReducer(state = initialState, action) {
             nextState = {
                 ...state, 
                 loading: action.loading,
-                expression: '',
-                compute: '',
+                expression: '0',
+                compute: '0',
                 lastPartOfExpression: ''
             }
             return nextState || state
@@ -68,35 +68,33 @@ function CalculatorReducer(state = initialState, action) {
                 ...state, 
                 loading: action.loading,
                 expression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.expression : state.expression+action.value,
-                compute: '',
                 lastPartOfExpression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.lastPartOfExpression : state.lastPartOfExpression+action.value
             }
             return nextState || state
 
-        case appActions.divisionMultRequest:
+        case appActions.divisionMultSumRequest:
             nextState = {
                 ...state,
                 loading: action.loading
             }
             return nextState || state;
 
-        case appActions.divisionMultSuccess:
-            let expressionLastChar = state.expression.substr(-1,1);
-            let expressionTwoLastChars = state.expression.substr(-1,2);
+        case appActions.divisionMultSumSuccess:
+            let expressionLastChar = state.expression.substr(state.expression.length -1, state.expression.length);
+            let expressionTwoLastChars = state.expression.substr(state.expression.length -2, state.expression.length);
             let constraint1 = new RegExp('[\\*\\-\\+\\/]{2}');
             let constraint2 = new RegExp('[\\*\\-\\+\\/]');
             let tmpExpression = state.expression;
-            if(!constraint1.test(expressionTwoLastChars) && constraint2.test(expressionLastChar)) {
+
+            if(!constraint1.test(expressionTwoLastChars) && constraint2.test(expressionLastChar)) 
                 tmpExpression = state.expression.substr(0, state.expression.length-1)+action.value;
-            } else if(!constraint1.test(expressionTwoLastChars) && !constraint2.test(expressionLastChar)) {
+            else if(!constraint1.test(expressionTwoLastChars) && !constraint2.test(expressionLastChar)) 
                 tmpExpression = state.expression+action.value;
-            }
 
             nextState = {
                 ...state, 
                 loading: action.loading,
                 expression: tmpExpression,
-                compute: '',
                 lastPartOfExpression: ''
             }
             return nextState || state
@@ -109,16 +107,16 @@ function CalculatorReducer(state = initialState, action) {
             return nextState || state;
 
         case appActions.substractionSuccess:
-            let subExpressionLastChar = state.expression.substr(-1,1);
-            let subExpressionTwoLastChars = state.expression.substr(-1,2);
+            let subExpressionLastChar = state.expression.substr(state.expression.length -1, state.expression.length);
+            let subExpressionTwoLastChars = state.expression.substr(state.expression.length -2, state.expression.length);
             let subConstraint1 = new RegExp('[\\*\\-\\+\\/]{2}');
             let subConstraint2 = new RegExp('[\\+\\-]');
             let subTmpExpression = state.expression;
-            if(!subConstraint1.test(subExpressionTwoLastChars) && subConstraint2.test(subExpressionLastChar)) {
+            
+            if(!subConstraint1.test(subExpressionTwoLastChars) && subConstraint2.test(subExpressionLastChar)) 
                 subTmpExpression = state.expression.substr(0, state.expression.length-1)+action.value;
-            } else if(!subConstraint1.test(subExpressionTwoLastChars) && !subConstraint2.test(subExpressionLastChar)) {
+            else if(!subConstraint1.test(subExpressionTwoLastChars) && !subConstraint2.test(subExpressionLastChar)) 
                 subTmpExpression = state.expression+action.value;
-            }
 
             nextState = {
                 ...state, 

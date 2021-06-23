@@ -11,12 +11,12 @@ const NoticeBoard = ({calculatorInfos}) => {
                 <div className='p-2'>
                     <div className='row' style={{height: 10}}>
                         <div className='col-12 text-end'>
-                            {calculatorInfos.expression}
+                            {calculatorInfos.expression+' ='}
                         </div>
                     </div>
-                    <div className='row p-2'>
+                    <div className='row p-2' style={{height: 55}}>
                         <div className='col-12 text-end fs-1 fw-bold'>
-                            = {calculatorInfos.compute}
+                            {calculatorInfos.compute}
                         </div>
                     </div>
                 </div>
