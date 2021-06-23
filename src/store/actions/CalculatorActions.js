@@ -93,3 +93,22 @@ export const fetchDivision = division => {
         setTimeout(() => dispatch(divisionSuccess(division)), 50);
     }
 }
+
+/* Pressed on multiplication button */
+const multiplicationRequest = () => ({
+    type: appActions.multiplicationRequest,
+    loading: true
+});
+
+const multiplicationSuccess = multiplication => ({
+    type: appActions.multiplicationSuccess,
+    loading: false,
+    value: multiplication
+});
+
+export const fetchMultiplication = multiplication => {
+    return (dispatch) => {
+        dispatch(multiplicationRequest());
+        setTimeout(() => dispatch(multiplicationSuccess(multiplication)), 50);
+    }
+}

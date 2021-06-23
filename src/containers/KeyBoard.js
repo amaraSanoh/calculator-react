@@ -36,7 +36,7 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
         } else if(btnPressedValue === '/'){
             calculatorActions.fetchDivision('/');
         } else if(btnPressedValue === '*'){
-            console.log(btnPressedValue);
+            calculatorActions.fetchMultiplication('*');
         } else if(btnPressedValue === '-'){
             console.log(btnPressedValue);
         } else if(btnPressedValue === '+'){
