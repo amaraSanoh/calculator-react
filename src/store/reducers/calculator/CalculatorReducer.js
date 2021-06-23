@@ -1,6 +1,6 @@
 import { appActions } from "../../../constants/Constants";
 
-const initialState = { expression: '', compute: '', loading: false }
+const initialState = { expression: '', compute: '', lastPartOfExpression: '', loading: false }
 
 function CalculatorReducer(state = initialState, action) {
     let nextState;
@@ -17,7 +17,8 @@ function CalculatorReducer(state = initialState, action) {
             nextState = {
                 ...state, 
                 loading: action.loading,
-                expression: state.expression+action.value
+                expression: state.expression+action.value,
+                lastPartOfExpression: state.lastPartOfExpression+action.value
             }
             return nextState || state
 
@@ -33,7 +34,8 @@ function CalculatorReducer(state = initialState, action) {
                 ...state, 
                 loading: action.loading,
                 expression: '',
-                compute: ''
+                compute: '',
+                lastPartOfExpression: ''
             }
             return nextState || state
 
@@ -49,7 +51,25 @@ function CalculatorReducer(state = initialState, action) {
                 ...state, 
                 loading: action.loading,
                 expression: state.expression.substr(0, state.expression.length - 1),
-                compute: ''
+                compute: '',
+                lastPartOfExpression: state.lastPartOfExpression.substr(0, state.lastPartOfExpression.length - 1)
+            }
+            return nextState || state
+
+        case appActions.dotRequest:
+            nextState = {
+                ...state,
+                loading: action.loading
+            }
+            return nextState || state;
+
+        case appActions.dotSuccess:
+            nextState = {
+                ...state, 
+                loading: action.loading,
+                expression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.expression : state.expression+action.value,
+                compute: '',
+                lastPartOfExpression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.lastPartOfExpression : state.lastPartOfExpression+action.value
             }
             return nextState || state
 

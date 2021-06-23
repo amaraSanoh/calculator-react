@@ -9,7 +9,8 @@ export const calculatorSelector = createSelector(
 		return {
             expression: calculatorState.expression,
             compute: calculatorState.compute,
-			loading: calculatorState.loading
+			loading: calculatorState.loading,
+			lastPartOfExpression: calculatorState.lastPartOfExpression
 		};
 	}
 )

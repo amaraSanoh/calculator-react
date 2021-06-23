@@ -101,38 +101,85 @@ exports[`<App /> Component renders correctly 1`] = `
         className="col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 border border-secondary p-2"
       >
         <div
-          className="row mb-2"
+          className="row"
         >
           <div
-            className="col-12"
+            className="col-6"
           >
-            <button
-              className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-fullWidth"
-              disabled={false}
-              onBlur={[Function]}
-              onClick={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              tabIndex={0}
-              type="button"
+            <div
+              className="row mb-2"
             >
-              <span
-                className="MuiButton-label"
+              <div
+                className="col-12"
               >
-                AC
-              </span>
-              <span
-                className="MuiTouchRipple-root"
-              />
-            </button>
+                <button
+                  className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-fullWidth"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    AC
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-6"
+          >
+            <div
+              className="row mb-2"
+            >
+              <div
+                className="col-12"
+              >
+                <button
+                  className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-fullWidth"
+                  disabled={false}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onDragLeave={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseLeave={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchMove={[Function]}
+                  onTouchStart={[Function]}
+                  tabIndex={0}
+                  type="button"
+                >
+                  <span
+                    className="MuiButton-label"
+                  >
+                    Delete
+                  </span>
+                  <span
+                    className="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div

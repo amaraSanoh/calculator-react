@@ -1,14 +1,15 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Acbutton from './Acbutton';
+import CleanButton from './CleanButton';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as calculatorActions from '../store/actions/CalculatorActions';
 import { calculatorSelector } from '../store/selectors/CalculatorSelector';
-import Delete from './Delete';
+import DeleteButton from './DeleteButton';
 
 const KeyBoard = ({calculatorInfos, calculatorActions}) => {
+    console.log(calculatorInfos);
 
     const keys = [
                     {value: '7', color: 'default'}, 
@@ -41,7 +42,7 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
         } else if(btnPressedValue === '+'){
             console.log(btnPressedValue);
         } else if(btnPressedValue === '.'){
-            console.log(btnPressedValue);
+            calculatorActions.fetchDot('.');
         } else if(btnPressedValue === '='){
             console.log(btnPressedValue);
         } 
@@ -53,10 +54,10 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
             <div className='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 border border-secondary p-2'>
                 <div className='row'>
                     <div className='col-6'>
-                        <Acbutton />
+                        <CleanButton />
                     </div>
                     <div className='col-6'>
-                        <Delete />
+                        <DeleteButton />
                     </div>
                 </div>
                 <div className='row'>

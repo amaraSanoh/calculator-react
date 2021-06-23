@@ -1,6 +1,6 @@
 import  {appActions} from '../../constants/Constants';
 
-/* Pressed number button */
+/* Pressed on number button */
 const numberRequest = () => ({
     type: appActions.numberRequest,
     loading: true
@@ -19,7 +19,7 @@ export const fetchNumber = number => {
     }
 }
 
-/* Pressed AC button */
+/* Pressed on AC button */
 const cleanRequest = () => ({
     type: appActions.cleanRequest,
     loading: true
@@ -37,7 +37,7 @@ export const fetchClean = () => {
     }
 }
 
-/* Long Pressed to AC button */
+/* Pressed on Delete button */
 const deleteRequest = () => ({
     type: appActions.deleteRequest,
     loading: true
@@ -52,5 +52,25 @@ export const fetchDelete = () => {
     return (dispatch) => {
         dispatch(deleteRequest());
         setTimeout(() => dispatch(deleteSuccess()), 50);
+    }
+}
+
+
+/* Pressed on dot button */
+const dotRequest = () => ({
+    type: appActions.dotRequest,
+    loading: true
+});
+
+const dotSuccess = dot => ({
+    type: appActions.dotSuccess,
+    loading: false,
+    value: dot
+});
+
+export const fetchDot = dot => {
+    return (dispatch) => {
+        dispatch(dotRequest());
+        setTimeout(() => dispatch(dotSuccess(dot)), 50);
     }
 }

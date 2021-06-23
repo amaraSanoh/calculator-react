@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as calculatorActions from '../store/actions/CalculatorActions';
 
-const Delete = ({calculatorActions}) => {
+const DeleteButton = ({calculatorActions}) => {
     return (
         <div className='row mb-2'>
             <div className='col-12'>
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Delete);
+export default connect(null, mapDispatchToProps)(DeleteButton);
