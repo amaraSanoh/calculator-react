@@ -75,40 +75,40 @@ export const fetchDot = dot => {
     }
 }
 
-/* Pressed on division button */
-const divisionRequest = () => ({
-    type: appActions.divisionRequest,
+/* Pressed on division or multiplication button */
+const divisionMultRequest = () => ({
+    type: appActions.divisionMultRequest,
     loading: true
 });
 
-const divisionSuccess = division => ({
-    type: appActions.divisionSuccess,
+const divisionMultSuccess = operator => ({
+    type: appActions.divisionMultSuccess,
     loading: false,
-    value: division
+    value: operator
 });
 
-export const fetchDivision = division => {
+export const fetchDivisionMult = division => {
     return (dispatch) => {
-        dispatch(divisionRequest());
-        setTimeout(() => dispatch(divisionSuccess(division)), 50);
+        dispatch(divisionMultRequest());
+        setTimeout(() => dispatch(divisionMultSuccess(division)), 50);
     }
 }
 
-/* Pressed on multiplication button */
-const multiplicationRequest = () => ({
-    type: appActions.multiplicationRequest,
+/* Pressed on substraction button */
+const substractionRequest = () => ({
+    type: appActions.substractionRequest,
     loading: true
 });
 
-const multiplicationSuccess = multiplication => ({
-    type: appActions.multiplicationSuccess,
+const substractionSuccess = substraction => ({
+    type: appActions.substractionSuccess,
     loading: false,
-    value: multiplication
+    value: substraction
 });
 
-export const fetchMultiplication = multiplication => {
+export const fetchSubstraction = substraction => {
     return (dispatch) => {
-        dispatch(multiplicationRequest());
-        setTimeout(() => dispatch(multiplicationSuccess(multiplication)), 50);
+        dispatch(substractionRequest());
+        setTimeout(() => dispatch(substractionSuccess(substraction)), 50);
     }
 }

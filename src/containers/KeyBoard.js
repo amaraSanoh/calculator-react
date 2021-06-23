@@ -33,17 +33,17 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
     const handleBtnPressed = btnPressedValue => {
         if(['9', '8', '7', '6', '5', '4', '3', '2', '1', '0'].includes(btnPressedValue)) {
             calculatorActions.fetchNumber(btnPressedValue);
-        } else if(btnPressedValue === '/'){
-            calculatorActions.fetchDivision('/');
-        } else if(btnPressedValue === '*'){
-            calculatorActions.fetchMultiplication('*');
-        } else if(btnPressedValue === '-'){
+        } else if(btnPressedValue === '/') {
+            calculatorActions.fetchDivisionMult('/');
+        } else if(btnPressedValue === '*') {
+            calculatorActions.fetchDivisionMult('*');
+        } else if(btnPressedValue === '-') {
+            calculatorActions.fetchSubstraction('-');
+        } else if(btnPressedValue === '+') {
             console.log(btnPressedValue);
-        } else if(btnPressedValue === '+'){
-            console.log(btnPressedValue);
-        } else if(btnPressedValue === '.'){
+        } else if(btnPressedValue === '.') {
             calculatorActions.fetchDot('.');
-        } else if(btnPressedValue === '='){
+        } else if(btnPressedValue === '=') {
             console.log(btnPressedValue);
         } 
 
