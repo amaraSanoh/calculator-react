@@ -81,11 +81,16 @@ function CalculatorReducer(state = initialState, action) {
             return nextState || state;
 
         case appActions.divisionSuccess:
-            let expressionLastChar = state.expression.substr(-1,1); 
-            let tmpExpression = state.expression+action.value;
-            if(expressionLastChar === '/' || expressionLastChar === '*' || expressionLastChar === '+' || expressionLastChar === '-') {
+            let expressionLastChar = state.expression.substr(-1,1);
+            let expressionTwoLastChars = state.expression.substr(-1,2);
+            let constraint1 = new RegExp('[\\*\\-\\+\\/]{2}');
+            let constraint2 = new RegExp('[\\*\\-\\+\\/]');
+            let tmpExpression = state.expression;
+            if(!constraint1.test(expressionTwoLastChars) && constraint2.test(expressionLastChar)) {
                 tmpExpression = state.expression.substr(0, state.expression.length-1)+action.value;
-            } 
+            } else if(!constraint1.test(expressionTwoLastChars) && !constraint2.test(expressionLastChar)) {
+                tmpExpression = state.expression+action.value;
+            }
 
             nextState = {
                 ...state, 
