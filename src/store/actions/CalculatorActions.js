@@ -74,3 +74,22 @@ export const fetchDot = dot => {
         setTimeout(() => dispatch(dotSuccess(dot)), 50);
     }
 }
+
+/* Pressed on division button */
+const divisionRequest = () => ({
+    type: appActions.divisionRequest,
+    loading: true
+});
+
+const divisionSuccess = division => ({
+    type: appActions.divisionSuccess,
+    loading: false,
+    value: division
+});
+
+export const fetchDivision = division => {
+    return (dispatch) => {
+        dispatch(divisionRequest());
+        setTimeout(() => dispatch(divisionSuccess(division)), 50);
+    }
+}

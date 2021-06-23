@@ -73,6 +73,29 @@ function CalculatorReducer(state = initialState, action) {
             }
             return nextState || state
 
+        case appActions.divisionRequest:
+            nextState = {
+                ...state,
+                loading: action.loading
+            }
+            return nextState || state;
+
+        case appActions.divisionSuccess:
+            let expressionLastChar = state.expression.substr(-1,1); 
+            let tmpExpression = state.expression+action.value;
+            if(expressionLastChar === '/' || expressionLastChar === '*' || expressionLastChar === '+' || expressionLastChar === '-') {
+                tmpExpression = state.expression.substr(0, state.expression.length-1)+action.value;
+            } 
+
+            nextState = {
+                ...state, 
+                loading: action.loading,
+                expression: tmpExpression,
+                compute: '',
+                lastPartOfExpression: ''
+            }
+            return nextState || state
+
         default:
             return state
     }
