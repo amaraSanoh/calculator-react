@@ -14,8 +14,8 @@ const NoticeBoard = ({calculatorInfos}) => {
                             {calculatorInfos.expression+' ='}
                         </div>
                     </div>
-                    <div className='row p-2' style={{height: 55}}>
-                        <div className='col-12 text-end fs-1 fw-bold'>
+                    <div className='row p-2' style={{height: 45}}>
+                        <div className='col-12 text-end fs-4 fw-bold'>
                             {calculatorInfos.compute}
                         </div>
                     </div>

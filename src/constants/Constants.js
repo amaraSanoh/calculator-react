@@ -8,6 +8,10 @@ export const appColors = {
     lightBlue: '#E0EEEE'
 }
 
+export const appApi = {
+    mainPath: 'https://127.0.0.1:8000/api/v1/compute'
+}
+
 export const appActions = {
     computeRequest: "COMPUTE_REQUEST",
     computeSuccess: "COMPUTE_SUCCESS",
@@ -37,8 +41,4 @@ export const appActions = {
     sumRequest: "SUM_REQUEST",
     sumSuccess: "SUM_SUCCESS",
     sumFailure: "SUM_FAILURE",
-}
-
-export const appApi = {
-    mainPath: 'http://127.0.0.1/api/v1/compute'
 }

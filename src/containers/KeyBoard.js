@@ -49,7 +49,7 @@ const KeyBoard = ({calculatorInfos, calculatorActions}) => {
             calculatorActions.fetchDot('.');
 
         else if(btnPressedValue === '=') 
-            console.log(btnPressedValue);
+            calculatorActions.fetchCompute(calculatorInfos.expression);
     };
 
     return (

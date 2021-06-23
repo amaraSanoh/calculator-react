@@ -1,4 +1,4 @@
-import  {appActions} from '../../constants/Constants';
+import  {appActions, appApi} from '../../constants/Constants';
 
 /* Pressed on number button */
 const numberRequest = () => ({
@@ -110,5 +110,53 @@ export const fetchSubstraction = substraction => {
     return (dispatch) => {
         dispatch(substractionRequest());
         setTimeout(() => dispatch(substractionSuccess(substraction)), 50);
+    }
+}
+
+/* Pressed on equals button */
+const computeRequest = () => ({
+    type: appActions.computeRequest,
+    loading: true
+});
+
+const computeSuccess = compute => ({
+    type: appActions.computeSuccess,
+    loading: false,
+    value: compute
+});
+
+export const fetchCompute = expression => {
+    let headers = new Headers({
+        "Content-Type":  "application/ld+json",
+        "Accept":  "application/ld+json"
+    });
+
+    let init = {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+            expression: expression
+        })
+    }; 
+
+    return dispatch => {
+        dispatch(computeRequest());
+            
+            return ( 
+                fetch(appApi.mainPath, init)
+                .then(response => {
+                    if(!response.ok) throw new Error('Error - 404 Found');
+
+                    return response.json(); 
+                })
+                .then(data => { 
+                    console.log(data);
+                    dispatch(computeSuccess(typeof data.compute !== undefined ? data.compute : data.error));
+                })
+                .catch(error => {
+                    console.log(error);
+                    // dispatch(loginFailure(error));
+                })
+            );
     }
 }

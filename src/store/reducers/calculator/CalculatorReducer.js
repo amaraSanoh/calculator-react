@@ -127,6 +127,22 @@ function CalculatorReducer(state = initialState, action) {
             }
             return nextState || state
 
+        case appActions.computeRequest:
+            nextState = {
+                ...state,
+                loading: action.loading
+            }
+            return nextState || state;
+
+        case appActions.computeSuccess:
+            nextState = {
+                ...state, 
+                loading: action.loading,
+                lastPartOfExpression: '',
+                compute: action.value
+            }
+            return nextState || state
+
         default:
             return state
     }
