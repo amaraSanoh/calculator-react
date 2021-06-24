@@ -1,6 +1,6 @@
 import { appActions } from "../../../constants/Constants";
 
-const initialState = { expression: '0', compute: '0', lastPartOfExpression: '', loading: false }
+const initialState = { expression: '0', compute: '0', lastPartOfExpression: '', loading: false, eventType: '' }
 
 function CalculatorReducer(state = initialState, action) {
     let nextState;
@@ -9,7 +9,8 @@ function CalculatorReducer(state = initialState, action) {
         case appActions.numberRequest:
             nextState = {
                 ...state,
-                loading: action.loading
+                loading: action.loading, 
+                eventType: appActions.numberRequest
             }
             return nextState || state;
 
@@ -18,14 +19,16 @@ function CalculatorReducer(state = initialState, action) {
                 ...state, 
                 loading: action.loading,
                 expression: state.expression === '0' ? action.value : state.expression+action.value,
-                lastPartOfExpression: state.lastPartOfExpression+action.value
+                lastPartOfExpression: state.lastPartOfExpression+action.value,
+                eventType: appActions.numberSuccess
             }
             return nextState || state
 
         case appActions.cleanRequest:
             nextState = {
                 ...state,
-                loading: action.loading
+                loading: action.loading,
+                eventType: appActions.cleanRequest
             }
             return nextState || state;
 
@@ -35,14 +38,16 @@ function CalculatorReducer(state = initialState, action) {
                 loading: action.loading,
                 expression: '0',
                 compute: '0',
-                lastPartOfExpression: ''
+                lastPartOfExpression: '',
+                eventType: appActions.cleanSuccess
             }
             return nextState || state
 
         case appActions.deleteRequest:
             nextState = {
                 ...state,
-                loading: action.loading
+                loading: action.loading,
+                eventType: appActions.deleteRequest
             }
             return nextState || state;
 
@@ -52,14 +57,16 @@ function CalculatorReducer(state = initialState, action) {
                 loading: action.loading,
                 expression: state.expression.substr(0, state.expression.length - 1),
                 compute: '',
-                lastPartOfExpression: state.lastPartOfExpression.substr(0, state.lastPartOfExpression.length - 1)
+                lastPartOfExpression: state.lastPartOfExpression.substr(0, state.lastPartOfExpression.length - 1),
+                eventType: appActions.deleteSuccess
             }
             return nextState || state
 
         case appActions.dotRequest:
             nextState = {
                 ...state,
-                loading: action.loading
+                loading: action.loading,
+                eventType: appActions.dotRequest
             }
             return nextState || state;
 
@@ -68,14 +75,16 @@ function CalculatorReducer(state = initialState, action) {
                 ...state, 
                 loading: action.loading,
                 expression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.expression : state.expression+action.value,
-                lastPartOfExpression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.lastPartOfExpression : state.lastPartOfExpression+action.value
+                lastPartOfExpression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.lastPartOfExpression : state.lastPartOfExpression+action.value,
+                eventType: appActions.dotSuccess
             }
             return nextState || state
 
         case appActions.divisionMultSumRequest:
             nextState = {
                 ...state,
-                loading: action.loading
+                loading: action.loading,
+                eventType: appActions.divisionMultSumRequest
             }
             return nextState || state;
 
@@ -95,14 +104,16 @@ function CalculatorReducer(state = initialState, action) {
                 ...state, 
                 loading: action.loading,
                 expression: tmpExpression,
-                lastPartOfExpression: ''
+                lastPartOfExpression: '',
+                eventType: appActions.divisionMultSumSuccess
             }
             return nextState || state
 
         case appActions.substractionRequest:
             nextState = {
                 ...state,
-                loading: action.loading
+                loading: action.loading,
+                eventType: appActions.substractionRequest
             }
             return nextState || state;
 
@@ -123,14 +134,16 @@ function CalculatorReducer(state = initialState, action) {
                 loading: action.loading,
                 expression: subTmpExpression,
                 compute: '',
-                lastPartOfExpression: action.value
+                lastPartOfExpression: action.value,
+                eventType: appActions.substractionSuccess
             }
             return nextState || state
 
         case appActions.computeRequest:
             nextState = {
                 ...state,
-                loading: action.loading
+                loading: action.loading,
+                eventType: appActions.computeRequest
             }
             return nextState || state;
 
@@ -139,7 +152,8 @@ function CalculatorReducer(state = initialState, action) {
                 ...state, 
                 loading: action.loading,
                 lastPartOfExpression: '',
-                compute: action.value
+                compute: action.value,
+                eventType: appActions.computeSuccess
             }
             return nextState || state
 

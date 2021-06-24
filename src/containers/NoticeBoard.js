@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import { connect } from 'react-redux';
 import { calculatorSelector } from '../store/selectors/CalculatorSelector';
 

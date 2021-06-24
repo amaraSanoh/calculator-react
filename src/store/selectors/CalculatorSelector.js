@@ -6,11 +6,6 @@ export const calculatorSelector = createSelector(
 	[getCalculatorState/*, another one */],
 	(calculatorState/*, another one */) => {
 
-		return {
-            expression: calculatorState.expression,
-            compute: calculatorState.compute,
-			loading: calculatorState.loading,
-			lastPartOfExpression: calculatorState.lastPartOfExpression
-		};
+		return calculatorState;
 	}
 )

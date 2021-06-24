@@ -150,8 +150,7 @@ export const fetchCompute = expression => {
                     return response.json(); 
                 })
                 .then(data => { 
-                    console.log(data);
-                    dispatch(computeSuccess(typeof data.compute !== undefined ? data.compute : data.error));
+                    dispatch(computeSuccess(typeof data.compute !== undefined ? data.compute : ''));
                 })
                 .catch(error => {
                     console.log(error);
