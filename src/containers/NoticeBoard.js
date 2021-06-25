@@ -9,7 +9,15 @@ const NoticeBoard = ({calculatorInfos}) => {
             <div className='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 border border-success'>
                 <div className='p-2'>
                     <div className='row mb-2' style={{height: 10}}>
-                        <div className='col-12 text-end'>
+                        <div className='col-12 text-end bg-light'>
+                            {
+                                (calculatorInfos.previousExpression !== '' && calculatorInfos.previousCompute !== '') ?
+                                calculatorInfos.previousExpression+' = '+calculatorInfos.previousCompute : ''
+                            }
+                        </div>
+                    </div>
+                    <div className='row mb-2' style={{height: 10}}>
+                        <div className='col-12 text-end fs-7 fw-bold'>
                             {calculatorInfos.expression+' ='}
                         </div>
                     </div>

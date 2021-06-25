@@ -1,6 +1,15 @@
 import { appActions } from "../../../constants/Constants";
 
-const initialState = { expression: '0', compute: '0', lastPartOfExpression: '', loading: false, eventType: '' }
+const initialState = { 
+    expression: '0', 
+    compute: '0', 
+    lastPartOfExpression: '', 
+    loading: false, 
+    eventType: '',
+    previousExpression: '',
+    previousCompute: '',
+    justCompute: false
+}
 
 function CalculatorReducer(state = initialState, action) {
     let nextState;
@@ -18,9 +27,10 @@ function CalculatorReducer(state = initialState, action) {
             nextState = {
                 ...state, 
                 loading: action.loading,
-                expression: state.expression === '0' ? action.value : state.expression+action.value,
+                expression: (state.expression === '0' || state.justCompute) ? action.value : state.expression+action.value,
                 lastPartOfExpression: state.lastPartOfExpression+action.value,
-                eventType: appActions.numberSuccess
+                eventType: appActions.numberSuccess,
+                justCompute: false
             }
             return nextState || state
 
@@ -39,7 +49,8 @@ function CalculatorReducer(state = initialState, action) {
                 expression: '0',
                 compute: '0',
                 lastPartOfExpression: '',
-                eventType: appActions.cleanSuccess
+                eventType: appActions.cleanSuccess,
+                justCompute: false
             }
             return nextState || state
 
@@ -55,10 +66,11 @@ function CalculatorReducer(state = initialState, action) {
             nextState = {
                 ...state, 
                 loading: action.loading,
-                expression: state.expression.substr(0, state.expression.length - 1),
-                compute: '',
-                lastPartOfExpression: state.lastPartOfExpression.substr(0, state.lastPartOfExpression.length - 1),
-                eventType: appActions.deleteSuccess
+                expression: state.justCompute ? '0' : state.expression.substr(0, state.expression.length - 1),
+                compute: state.justCompute ? '0' : '',
+                lastPartOfExpression: state.justCompute ? '0' : state.lastPartOfExpression.substr(0, state.lastPartOfExpression.length - 1),
+                eventType: appActions.deleteSuccess,
+                justCompute: false
             }
             return nextState || state
 
@@ -74,9 +86,10 @@ function CalculatorReducer(state = initialState, action) {
             nextState = {
                 ...state, 
                 loading: action.loading,
-                expression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.expression : state.expression+action.value,
-                lastPartOfExpression: state.lastPartOfExpression.indexOf('.') !== -1 ? state.lastPartOfExpression : state.lastPartOfExpression+action.value,
-                eventType: appActions.dotSuccess
+                expression: state.justCompute ? action.value : (state.lastPartOfExpression.indexOf('.') !== -1 ? state.expression : state.expression+action.value),
+                lastPartOfExpression: state.justCompute ? action.value : (state.lastPartOfExpression.indexOf('.') !== -1 ? state.lastPartOfExpression : state.lastPartOfExpression+action.value),
+                eventType: appActions.dotSuccess, 
+                justCompute: false
             }
             return nextState || state
 
@@ -98,14 +111,15 @@ function CalculatorReducer(state = initialState, action) {
             if(!constraint1.test(expressionTwoLastChars) && constraint2.test(expressionLastChar)) 
                 tmpExpression = state.expression.substr(0, state.expression.length-1)+action.value;
             else if(!constraint1.test(expressionTwoLastChars) && !constraint2.test(expressionLastChar)) 
-                tmpExpression = state.expression+action.value;
+                tmpExpression = state.justCompute ? state.compute+action.value : state.expression+action.value;
 
             nextState = {
                 ...state, 
                 loading: action.loading,
                 expression: tmpExpression,
                 lastPartOfExpression: '',
-                eventType: appActions.divisionMultSumSuccess
+                eventType: appActions.divisionMultSumSuccess,
+                justCompute: false
             }
             return nextState || state
 
@@ -127,7 +141,7 @@ function CalculatorReducer(state = initialState, action) {
             if(!subConstraint1.test(subExpressionTwoLastChars) && subConstraint2.test(subExpressionLastChar)) 
                 subTmpExpression = state.expression.substr(0, state.expression.length-1)+action.value;
             else if(!subConstraint1.test(subExpressionTwoLastChars) && !subConstraint2.test(subExpressionLastChar)) 
-                subTmpExpression = state.expression+action.value;
+                subTmpExpression = state.justCompute ? state.compute+action.value : state.expression+action.value;
 
             nextState = {
                 ...state, 
@@ -135,7 +149,8 @@ function CalculatorReducer(state = initialState, action) {
                 expression: subTmpExpression,
                 compute: '',
                 lastPartOfExpression: action.value,
-                eventType: appActions.substractionSuccess
+                eventType: appActions.substractionSuccess,
+                justCompute: false,
             }
             return nextState || state
 
@@ -153,7 +168,10 @@ function CalculatorReducer(state = initialState, action) {
                 loading: action.loading,
                 lastPartOfExpression: '',
                 compute: action.value,
-                eventType: appActions.computeSuccess
+                eventType: appActions.computeSuccess,
+                previousExpression: state.expression,
+                previousCompute: action.value,
+                justCompute: true
             }
             return nextState || state
 
