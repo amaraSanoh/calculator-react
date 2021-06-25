@@ -1,6 +1,6 @@
 import './App.css';
 import MainBar from './components/MainBar';
-import Calculator from './containers/Calculator';
+import Calculator from './components/Calculator';
 
 import { Provider } from 'react-redux';
 import { store } from './store/Config';

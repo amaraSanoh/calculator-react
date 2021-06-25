@@ -1,7 +1,7 @@
 import React from 'react';
-import AppBackdrop from '../components/AppBackdrop';
-import KeyBoard from './KeyBoard';
-import NoticeBoard from './NoticeBoard';
+import AppBackdrop from '../containers/AppBackdrop';
+import KeyBoard from '../containers/KeyBoard';
+import NoticeBoard from '../containers/NoticeBoard';
 
 const Calculator = () => {
     
